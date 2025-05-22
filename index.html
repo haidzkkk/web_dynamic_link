@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mở app</title>
+  <script>
+    setTimeout(function () {
+      window.location.href = "https://play.google.com/store/apps/details?id=com.your.app"; // fallback nếu app chưa cài
+    }, 2000);
+
+    window.location = "myapp://open?id=123"; // deep link gọi app
+  </script>
+</head>
+<body>
+  <p>Đang mở ứng dụng...</p>
+</body>
+</html>
