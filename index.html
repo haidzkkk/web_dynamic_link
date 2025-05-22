@@ -1,41 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>History of VietNam</title>
-    <link rel="icon" href="logo_app.png" type="image/png">
+    <link rel="icon" href="logo_app.png" type="image/png" />
+</head>
+
+<body>
+    <p>Đang mở ứng dụng...</p>
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
-        const dynamicId = urlParams.get('quizId') || '0';  // mặc định id=0 nếu không có
+        const dynamicId = urlParams.get('quizId') || '0';  // mặc định 0 nếu không có
+
+        // Tạo nội dung mới: message + nút bấm + status
+        document.body.innerHTML = `
+            <p>Đang mở ứng dụng...</p>
+            <button id="openAppBtn">Mở ứng dụng</button>
+            <p id="status"></p>
+        `;
 
         function openApp() {
             window.location = "history://vietnam?quizId=" + dynamicId;
         }
 
-        // Thêm nút để người dùng bấm mở app, tránh trình duyệt chặn tự động redirect
-        document.body.innerHTML = `
-                <p>Đang mở ứng dụng...</p>
-                <button id="openAppBtn">Mở ứng dụng</button>
-                <p id="status"></p>
-            `;
-
         document.getElementById('openAppBtn').addEventListener('click', () => {
             openApp();
 
-            // Sau 3 giây không mở được app thì hiển thị thông báo
             setTimeout(() => {
                 document.getElementById('status').innerText = "Bạn chưa cài ứng dụng hoặc không mở được.";
             }, 3000);
         });
     </script>
-
-
-</head>
-
-<body>
-    <p>Đang mở ứng dụng...</p>
 </body>
 
 </html>
